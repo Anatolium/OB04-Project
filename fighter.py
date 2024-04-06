@@ -48,6 +48,9 @@ class Fighter:
         self.weapon = weapon
         print(f"{self.name} выбирает {self.weapon.name}")
 
+    def fight(self):
+        return self.weapon.attack()
+
 class Monster:
     def defend(self):
         return randint(1, RANDOM_MAX)
@@ -61,7 +64,7 @@ weapon_list = [bow, sword, laser]
 
 def get_fight_result(weapon_number):
     fighter.changeWeapon(weapon_list[weapon_number-1])
-    if fighter.weapon.attack() != monster.defend():
+    if fighter.fight() != monster.defend():
         print("**** Боец победил! ****")
         return 1
     else:
